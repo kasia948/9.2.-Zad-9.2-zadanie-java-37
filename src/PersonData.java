@@ -1,30 +1,39 @@
 import java.util.Scanner;
 
 public class PersonData {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
-        Person person1= new Person();
+
         System.out.println("Podaj imię");
-        try {
-            person1.setFirstName(sc.nextLine());
-        } catch (NameUndefinedException ex){
-            System.out.println("Nic nie podałeś lub podanę imię jest za krótkie");
-        }
+        String tempFirstName = sc.nextLine();
         System.out.println("Podaj nazwisko");
-        try {
-            person1.setLastName(sc.nextLine());
-        }catch (NameUndefinedException ex){
-            System.out.println("Nic nie podałeś lub podane nazwisko jest za krótkie");
-        }
+        String tempLastName = sc.nextLine();
         System.out.println("Podaj wiek");
-        try {
-            person1.setAge(sc.nextInt());
-        }catch (IncorrectAgeException ex){
-            System.out.println("Nieprawidłowy wiek, podaj wartość większą od 1");
-        }
+        int tempAge = sc.nextInt();
         System.out.println("Podaj pesel");
-        person1.setPesel(sc.nextInt());
-        System.out.println(person1.getFirstName()+" "+person1.getLastName()+" "+person1.getAge()+", "+person1.getPesel());
+        int tempPesel = sc.nextInt();
+
+        Person person = new Person();
+        try {
+            person.setFirstName(tempFirstName);
+        } catch (NameUndefinedException e) {
+            System.out.println("Nie podałeś imienia lub imię jest zbyt krótkie");
+            e.printStackTrace();
+        }
+        try {
+            person.setLastName(tempLastName);
+        } catch (NameUndefinedException e) {
+            System.out.println("Nie podałeś nazwiska lub nazwisko jest zbyt krótkie");
+            e.printStackTrace();
+        }
+        try {
+            person.setAge(tempAge);
+        } catch (IncorrectAgeException e) {
+            System.out.println("Podałeś zbyt niski wiek");
+        }
+        person.setPesel(tempPesel);
+
+        System.out.println(person.getFirstName() + " " + person.getLastName() + " " + person.getAge() + " " + person.getPesel());
     }
 }
 
