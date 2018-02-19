@@ -4,13 +4,10 @@ public class Person {
     private int age;
     private int pesel;
 
-    public Person() {
-    }
-
-    public Person(String firstName, String lastName, int age, int pesel) {
-        this.firstName= firstName;
-        this.lastName = lastName;
-        this.age = age;
+    public Person(String firstName, String lastName, int age, int pesel) throws NameUndefinedException, IncorrectAgeException {
+        setFirstName(firstName);
+        setLastName(lastName);
+        setAge(age);
         this.pesel = pesel;
     }
 
@@ -30,11 +27,14 @@ public class Person {
     }
 
     public void setLastName (String lastName) throws NameUndefinedException {
-        if (lastName==null||lastName.length()<2){
+        if (lastName == null || lastName.length() < 2) {
             throw new NameUndefinedException("Nie podałeś nazwiska lub nazwisko jest zbyt krótkie");
         }
         this.lastName = lastName;
     }
+
+
+
 
     public int getAge() {
         return age;

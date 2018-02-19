@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class PersonData {
-    public static void main(String[] args){
+    public static void main(String[] args) throws NameUndefinedException, IncorrectAgeException {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Podaj imię");
@@ -13,7 +13,7 @@ public class PersonData {
         System.out.println("Podaj pesel");
         int tempPesel = sc.nextInt();
 
-        Person person = new Person();
+        Person person = new Person(tempFirstName, tempLastName, tempAge, tempPesel);
         try {
             person.setFirstName(tempFirstName);
         } catch (NameUndefinedException e) {
